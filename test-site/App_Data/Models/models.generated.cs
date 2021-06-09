@@ -17,8 +17,8 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c29e51b132ff86a6")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.9")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "3c190ccfb5630f8e")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedModels
 {
@@ -208,14 +208,14 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// tMainImage: Enter main image
+		/// MainImage: Enter main image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tMainImage")]
 		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>("tMainImage");
 
 		///<summary>
-		/// tTitle: Enter text for image
+		/// Title: Enter text for image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tTitle")]
@@ -474,6 +474,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("link")]
 		public virtual global::Umbraco.Web.Models.Link Link => this.Value<global::Umbraco.Web.Models.Link>("link");
+
+		///<summary>
+		/// Alternative Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tAlternativeText")]
+		public virtual string TAlternativeText => this.Value<string>("tAlternativeText");
 
 		///<summary>
 		/// Image
