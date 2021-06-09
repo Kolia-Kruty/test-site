@@ -1,10 +1,71 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
 
-@* the fun starts here *@
 
 <main>
-	123
+    <section class="container mt-3 mb-3 top">
+        <div class="top__content">
+            <h1 class="top__title">My site. Page Home</h1>
+        </div>
+    </section>
+
+    <section class="container mb-4">
+        <div class="row justify-content-between align-items-stretch ">
+            <div class="col-md-6 col-12 mb-3">
+                <a class="shadow p-3 pb-5 position-relative bg-light rounded d-block d-flex text-decoration-none h-100 border" href="#">
+                    <div class="col-12 ps-3">
+                        <h6 class="new__title-content">
+                            Tetra Tech buys international development consultancy
+                            Kaizen
+                        </h6>
+                        <p class="new__description-content">
+                            Tetra Tech, a Pasadena, California-based engineering
+                            and consulting firm, has acquired The Kaizen Company, a Washington, DC-based
+                            management consulting firm specializing in international development.
+
+                            Founded in 2004, Kaizen provides management consulting services to help developing
+                            countries improve economic growth, health, education, governance, and stability. The
+                            firm has completed more than 50 projects worldwide across its core service lines,
+                            which include innovation & entrepreneurship, organizational development, and
+                            communities of practice.
+                        </p>
+                        <p class="new__date-content">
+                            20.5.2021
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-12 mb-3">
+                <a class="shadow p-3 pb-5 position-relative bg-light rounded d-block d-flex text-decoration-none h-100 border" href="#">
+                    <div class="col-12 ps-3">
+                        <h6 class="new__title-content">
+                            Tetra Tech buys international development consultancy
+                            Kaizen
+                        </h6>
+                        <p class="new__description-content">
+                            Tetra Tech, a Pasadena, California-based engineering
+                            and consulting firm, has acquired The Kaizen Company, a Washington, DC-based
+                            management consulting firm specializing in international development.
+
+                            Founded in 2004, Kaizen provides management consulting services to help developing
+                            countries improve economic growth, health, education, governance, and stability. The
+                            firm has completed more than 50 projects worldwide across its core service lines,
+                            which include innovation & entrepreneurship, organizational development, and
+                            communities of practice.
+                        </p>
+                        <p class="new__date-content">
+                            20.5.2021
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    @Html.Partial("Test-site/TContactForm")
+
 </main>

@@ -17,14 +17,14 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "1eaa7bbfb808ded")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c29e51b132ff86a6")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.9")]
 
 namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel
+	public partial class Home : PublishedContentModel, IFooterContainer, IHeaderContainer
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -46,6 +46,441 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Copyright: Enter copyright
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tCopyright")]
+		public virtual string TCopyright => global::Umbraco.Web.PublishedModels.FooterContainer.GetTCopyright(this);
+
+		///<summary>
+		/// Footer icon-link items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tLInks")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.FooterIconItems> TLinks => global::Umbraco.Web.PublishedModels.FooterContainer.GetTLinks(this);
+
+		///<summary>
+		/// Header Logo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tHeaderLogo")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops THeaderLogo => global::Umbraco.Web.PublishedModels.HeaderContainer.GetTHeaderLogo(this);
+
+		///<summary>
+		/// Header Menu Items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tHeaderMenuItems")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> THeaderMenuItems => global::Umbraco.Web.PublishedModels.HeaderContainer.GetTHeaderMenuItems(this);
+	}
+
+	/// <summary>News List</summary>
+	[PublishedModel("newsList")]
+	public partial class NewsList : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "newsList";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsList, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public NewsList(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+	}
+
+	/// <summary>News Item</summary>
+	[PublishedModel("news")]
+	public partial class News : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "news";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<News, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public News(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+	}
+
+	/// <summary>News Controls</summary>
+	[PublishedModel("newsControls")]
+	public partial class NewsControls : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "newsControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public NewsControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// tContent: Enter content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tContent")]
+		public virtual global::System.Web.IHtmlString TContent => this.Value<global::System.Web.IHtmlString>("tContent");
+
+		///<summary>
+		/// tDate: Enter date
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDate")]
+		public virtual global::System.DateTime TDate => this.Value<global::System.DateTime>("tDate");
+
+		///<summary>
+		/// tDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDescription")]
+		public virtual string TDescription => this.Value<string>("tDescription");
+
+		///<summary>
+		/// tTitle: Enter title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => this.Value<string>("tTitle");
+	}
+
+	/// <summary>Main Image Controls</summary>
+	[PublishedModel("mainImageControls")]
+	public partial class MainImageControls : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "mainImageControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<MainImageControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public MainImageControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// tMainImage: Enter main image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tMainImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>("tMainImage");
+
+		///<summary>
+		/// tTitle: Enter text for image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => this.Value<string>("tTitle");
+	}
+
+	/// <summary>About Us List</summary>
+	[PublishedModel("aboutUsList")]
+	public partial class AboutUsList : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "aboutUsList";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AboutUsList, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public AboutUsList(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+	}
+
+	// Mixin Content Type with alias "headerContainer"
+	/// <summary>Header container</summary>
+	public partial interface IHeaderContainer : IPublishedContent
+	{
+		/// <summary>Header Logo</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		global::Umbraco.Core.Models.MediaWithCrops THeaderLogo { get; }
+
+		/// <summary>Header Menu Items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> THeaderMenuItems { get; }
+	}
+
+	/// <summary>Header container</summary>
+	[PublishedModel("headerContainer")]
+	public partial class HeaderContainer : PublishedContentModel, IHeaderContainer
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "headerContainer";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HeaderContainer, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public HeaderContainer(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Header Logo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tHeaderLogo")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops THeaderLogo => GetTHeaderLogo(this);
+
+		/// <summary>Static getter for Header Logo</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::Umbraco.Core.Models.MediaWithCrops GetTHeaderLogo(IHeaderContainer that) => that.Value<global::Umbraco.Core.Models.MediaWithCrops>("tHeaderLogo");
+
+		///<summary>
+		/// Header Menu Items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tHeaderMenuItems")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> THeaderMenuItems => GetTHeaderMenuItems(this);
+
+		/// <summary>Static getter for Header Menu Items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> GetTHeaderMenuItems(IHeaderContainer that) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems>>("tHeaderMenuItems");
+	}
+
+	/// <summary>Header menu items</summary>
+	[PublishedModel("headerMenuItems")]
+	public partial class HeaderMenuItems : PublishedElementModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "headerMenuItems";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HeaderMenuItems, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public HeaderMenuItems(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Caption
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tCaption")]
+		public virtual string TCaption => this.Value<string>("tCaption");
+
+		///<summary>
+		/// Link
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tLink")]
+		public virtual global::Umbraco.Web.Models.Link TLink => this.Value<global::Umbraco.Web.Models.Link>("tLink");
+
+		///<summary>
+		/// Sub Menu Items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tSubMenuItems")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> TSubMenuItems => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems>>("tSubMenuItems");
+	}
+
+	/// <summary>About Us Item</summary>
+	[PublishedModel("aboutUsItem")]
+	public partial class AboutUsItem : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "aboutUsItem";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AboutUsItem, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public AboutUsItem(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+	}
+
+	// Mixin Content Type with alias "footerContainer"
+	/// <summary>Footer container</summary>
+	public partial interface IFooterContainer : IPublishedContent
+	{
+		/// <summary>Copyright</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		string TCopyright { get; }
+
+		/// <summary>Footer icon-link items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.FooterIconItems> TLinks { get; }
+	}
+
+	/// <summary>Footer container</summary>
+	[PublishedModel("footerContainer")]
+	public partial class FooterContainer : PublishedContentModel, IFooterContainer
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "footerContainer";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FooterContainer, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public FooterContainer(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Copyright: Enter copyright
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tCopyright")]
+		public virtual string TCopyright => GetTCopyright(this);
+
+		/// <summary>Static getter for Copyright</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static string GetTCopyright(IFooterContainer that) => that.Value<string>("tCopyright");
+
+		///<summary>
+		/// Footer icon-link items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tLInks")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.FooterIconItems> TLinks => GetTLinks(this);
+
+		/// <summary>Static getter for Footer icon-link items</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.FooterIconItems> GetTLinks(IFooterContainer that) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.FooterIconItems>>("tLInks");
+	}
+
+	/// <summary>Footer icon items</summary>
+	[PublishedModel("footerIconItems")]
+	public partial class FooterIconItems : PublishedElementModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "footerIconItems";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FooterIconItems, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public FooterIconItems(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Link: Enter link
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("link")]
+		public virtual global::Umbraco.Web.Models.Link Link => this.Value<global::Umbraco.Web.Models.Link>("link");
+
+		///<summary>
+		/// Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>("tImage");
 	}
 
 	/// <summary>Folder</summary>
