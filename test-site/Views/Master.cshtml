@@ -1,6 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ClientDependency.Core.Mvc;
 @{
     Layout = null;
+
+    Html.RequiresCss("~/css/bootstrap.min.css");
+    Html.RequiresCss("~/css/style.css");
+    Html.RequiresCss("https://fonts.gstatic.com");
+    Html.RequiresCss("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+    Html.RequiresJs("~/js/bootstrap.min.js");
+    Html.RequiresJs("~/js/jquery.min.js");
+    Html.RequiresJs("~/js/slick.min.js");
+    Html.RequiresJs("~/js/script.js");
+
+
 }
 
 <!DOCTYPE html>
@@ -12,33 +25,25 @@
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <title>TestSite.com</title>
+
+    @Html.RenderCssHere()
 </head>
 
 <body>
     <div class="wrapper">
 
-        
+        @Html.Partial("~/Views/Partials/Test-site/tHeader.cshtml")
 
-        <main>
-            @RenderBody()
+        @RenderBody()
 
-        </main>
+        @Html.Partial("~/Views/Partials/Test-site/tFooter.cshtml")
 
-        
 
     </div>
 
-
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/script.js"></script>
+    @Html.RenderJsHere()
 
 </body>
 
