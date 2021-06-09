@@ -290,7 +290,30 @@
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="config\logviewer.searches.config.js" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\header-bg.jpg" />
+    <Content Include="images\icons\close.png" />
+    <Content Include="images\icons\facebook_icon.png" />
+    <Content Include="images\icons\Facebook_icon2.png" />
+    <Content Include="images\icons\menu.png" />
+    <Content Include="images\icons\romania.png" />
+    <Content Include="images\icons\twitter_icon.png" />
+    <Content Include="images\icons\Twitter_icon2.png" />
+    <Content Include="images\icons\ukraine.png" />
+    <Content Include="images\icons\youtube_icon.png" />
+    <Content Include="images\icons\Youtube_icon2.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\mountain.jpg" />
+    <Content Include="images\new.jpg" />
+    <Content Include="images\product.jpg" />
+    <Content Include="images\request-demo.png" />
+    <Content Include="images\top-home-bg.jpg" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\script.js" />
+    <Content Include="js\slick.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +342,10 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
+    <Content Include="Views\Master.cshtml" />
+    <Content Include="Views\Home.cshtml" />
+    <Content Include="Views\Partials\Test-site\tFooter.cshtml" />
+    <Content Include="Views\Partials\Test-site\tHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
