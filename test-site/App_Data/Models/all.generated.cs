@@ -6,7 +6,7 @@ using  Umbraco.Core.Models;
 using  Umbraco.Core.Models.PublishedContent;
 using  Umbraco.Web;
 using  Umbraco.ModelsBuilder.Embedded;
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "8dc59643384bbe6b")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d232874a0109f8f8")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -106,7 +106,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>News List</summary>
 	[PublishedModel("newsList")]
-	public partial class NewsList : PublishedContentModel, IDescription
+	public partial class NewsList : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -128,18 +128,11 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
-
-		///<summary>
-		/// Description
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		[ImplementPropertyType("tDescription")]
-		public virtual string TDescription => global::Umbraco.Web.PublishedModels.Description.GetTDescription(this);
 	}
 
 	/// <summary>News Item</summary>
 	[PublishedModel("news")]
-	public partial class News : PublishedContentModel
+	public partial class News : PublishedContentModel, IKeyWords
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -161,6 +154,48 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Content: Enter content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tContent")]
+		public virtual global::Newtonsoft.Json.Linq.JToken TContent => this.Value<global::Newtonsoft.Json.Linq.JToken>("tContent");
+
+		///<summary>
+		/// Date: Enter date
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDate")]
+		public virtual global::System.DateTime TDate => this.Value<global::System.DateTime>("tDate");
+
+		///<summary>
+		/// Headline: Enter headline
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tHeadline")]
+		public virtual string THeadline => this.Value<string>("tHeadline");
+
+		///<summary>
+		/// Show: Show to home page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tShow")]
+		public virtual bool TShow => this.Value<bool>("tShow");
+
+		///<summary>
+		/// Summary: Enter summary
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tSummary")]
+		public virtual string TSummary => this.Value<string>("tSummary");
+
+		///<summary>
+		/// Key Words
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tKeyWords")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TKeyWords => global::Umbraco.Web.PublishedModels.KeyWords.GetTKeyWords(this);
 	}
 
 	/// <summary>News Controls</summary>
@@ -586,18 +621,9 @@ namespace Umbraco.Web.PublishedModels
 		public static string GetTText(IImageWithTextControls that) => that.Value<string>("tText");
 	}
 
-	// Mixin Content Type with alias "description"
-	/// <summary>Description</summary>
-	public partial interface IDescription : IPublishedContent
-	{
-		/// <summary>Description</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		string TDescription { get; }
-	}
-
-	/// <summary>Description</summary>
+	/// <summary>Description Controls</summary>
 	[PublishedModel("description")]
-	public partial class Description : PublishedContentModel, IDescription
+	public partial class Description : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -625,11 +651,53 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tDescription")]
-		public virtual string TDescription => GetTDescription(this);
+		public virtual string TDescription => this.Value<string>("tDescription");
+	}
 
-		/// <summary>Static getter for Description</summary>
+	// Mixin Content Type with alias "keyWords"
+	/// <summary>Key Words Controls</summary>
+	public partial interface IKeyWords : IPublishedContent
+	{
+		/// <summary>Key Words</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public static string GetTDescription(IDescription that) => that.Value<string>("tDescription");
+		global::System.Collections.Generic.IEnumerable<string> TKeyWords { get; }
+	}
+
+	/// <summary>Key Words Controls</summary>
+	[PublishedModel("keyWords")]
+	public partial class KeyWords : PublishedContentModel, IKeyWords
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "keyWords";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<KeyWords, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public KeyWords(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Key Words
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tKeyWords")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TKeyWords => GetTKeyWords(this);
+
+		/// <summary>Static getter for Key Words</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::System.Collections.Generic.IEnumerable<string> GetTKeyWords(IKeyWords that) => that.Value<global::System.Collections.Generic.IEnumerable<string>>("tKeyWords");
 	}
 
 	/// <summary>Folder</summary>

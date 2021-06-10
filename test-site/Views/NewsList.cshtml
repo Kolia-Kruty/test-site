@@ -1,7 +1,11 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.PublishedModels.NewsList>
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+
+    //var model = Model.Root().Descendants<NewsList>();
+    var model = Model;
+    int x = 1;
+
 }
 
-@* the fun starts here *@
-
+<h1>News</h1>

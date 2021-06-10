@@ -351,6 +351,8 @@
     <Content Include="Views\Partials\Test-site\THeader.cshtml" />
     <Content Include="Views\AboutUsList.cshtml" />
     <Content Include="Views\NewsList.cshtml" />
+    <Content Include="Views\AboutUsItem.cshtml" />
+    <Content Include="Views\NewsItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
