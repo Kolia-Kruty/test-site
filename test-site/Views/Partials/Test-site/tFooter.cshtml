@@ -2,14 +2,6 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     ContentModels.Home root = Model.Root() as ContentModels.Home;
-
-    foreach (var item in root.TLinks)
-    {
-        var y = (Umbraco.Web.Models.Link)item.Link;
-    }
-
-
-    int x = 1;
 }
 
 <footer class="footer">
@@ -27,27 +19,17 @@
                     {
                         if (item.Link is Umbraco.Web.Models.Link link)
                         {
-                            <a href="@link.Url" class="footer__link d-block">
-                                <img src="@item.TImage.MediaItem.Url" alt="@item.TAlternativeText" class="footer__link-img">
-                            </a>
+
+                            if (!string.IsNullOrWhiteSpace(link.Url) && !string.IsNullOrWhiteSpace(item.TImage.MediaItem.Url))
+                            {
+                                <a href="@link.Url" class="footer__link d-block">
+                                    <img src="@item.TImage.MediaItem.Url" alt="@item.TAlternativeText" class="footer__link-img">
+                                </a>
+                            }
                         }
-
-
 
                     }
 
-
-
-                    @*<a href="#" class="footer__link d-block">
-            <img src="~/images/icons/Facebook_icon2.png" alt="icon facebook"
-                 class="footer__link-img">
-        </a>
-        <a href="#" class="footer__link d-block">
-            <img src="~/images/icons/Twitter_icon2.png" alt="icon twitter" class="footer__link-img">
-        </a>
-        <a href="#" class="footer__link d-block">
-            <img src="~/images/icons/Youtube_icon2.png" alt="icon youtube" class="footer__link-img">
-        </a>*@
                 </div>
 
             </div>

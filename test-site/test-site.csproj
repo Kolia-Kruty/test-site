@@ -317,7 +317,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContactSurfaceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\imageprocessor\security.config" />
@@ -347,6 +349,8 @@
     <Content Include="Views\Partials\Test-site\TContactForm.cshtml" />
     <Content Include="Views\Partials\Test-site\TFooter.cshtml" />
     <Content Include="Views\Partials\Test-site\THeader.cshtml" />
+    <Content Include="Views\AboutUsList.cshtml" />
+    <Content Include="Views\NewsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

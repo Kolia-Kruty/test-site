@@ -6,7 +6,7 @@ using  Umbraco.Core.Models;
 using  Umbraco.Core.Models.PublishedContent;
 using  Umbraco.Web;
 using  Umbraco.ModelsBuilder.Embedded;
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "3c190ccfb5630f8e")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "8dc59643384bbe6b")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -38,7 +38,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel, IFooterContainer, IHeaderContainer
+	public partial class Home : PublishedContentModel, IFooterContainer, IHeaderContainer, IImageWithTextControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -88,11 +88,25 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tHeaderMenuItems")]
 		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.HeaderMenuItems> THeaderMenuItems => global::Umbraco.Web.PublishedModels.HeaderContainer.GetTHeaderMenuItems(this);
+
+		///<summary>
+		/// Image: Please select image for background graphic.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TImage => global::Umbraco.Web.PublishedModels.ImageWithTextControls.GetTImage(this);
+
+		///<summary>
+		/// Text: Enter the text that will be in the image.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tText")]
+		public virtual string TText => global::Umbraco.Web.PublishedModels.ImageWithTextControls.GetTText(this);
 	}
 
 	/// <summary>News List</summary>
 	[PublishedModel("newsList")]
-	public partial class NewsList : PublishedContentModel
+	public partial class NewsList : PublishedContentModel, IDescription
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -114,6 +128,13 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDescription")]
+		public virtual string TDescription => global::Umbraco.Web.PublishedModels.Description.GetTDescription(this);
 	}
 
 	/// <summary>News Item</summary>
@@ -502,6 +523,113 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tImage")]
 		public virtual global::Umbraco.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>("tImage");
+	}
+
+	// Mixin Content Type with alias "imageWithTextControls"
+	/// <summary>Image With Text Controls</summary>
+	public partial interface IImageWithTextControls : IPublishedContent
+	{
+		/// <summary>Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		global::Umbraco.Core.Models.MediaWithCrops TImage { get; }
+
+		/// <summary>Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		string TText { get; }
+	}
+
+	/// <summary>Image With Text Controls</summary>
+	[PublishedModel("imageWithTextControls")]
+	public partial class ImageWithTextControls : PublishedContentModel, IImageWithTextControls
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "imageWithTextControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageWithTextControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public ImageWithTextControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Image: Please select image for background graphic.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TImage => GetTImage(this);
+
+		/// <summary>Static getter for Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::Umbraco.Core.Models.MediaWithCrops GetTImage(IImageWithTextControls that) => that.Value<global::Umbraco.Core.Models.MediaWithCrops>("tImage");
+
+		///<summary>
+		/// Text: Enter the text that will be in the image.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tText")]
+		public virtual string TText => GetTText(this);
+
+		/// <summary>Static getter for Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static string GetTText(IImageWithTextControls that) => that.Value<string>("tText");
+	}
+
+	// Mixin Content Type with alias "description"
+	/// <summary>Description</summary>
+	public partial interface IDescription : IPublishedContent
+	{
+		/// <summary>Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		string TDescription { get; }
+	}
+
+	/// <summary>Description</summary>
+	[PublishedModel("description")]
+	public partial class Description : PublishedContentModel, IDescription
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const string ModelTypeAlias = "description";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Description, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public Description(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDescription")]
+		public virtual string TDescription => GetTDescription(this);
+
+		/// <summary>Static getter for Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static string GetTDescription(IDescription that) => that.Value<string>("tDescription");
 	}
 
 	/// <summary>Folder</summary>

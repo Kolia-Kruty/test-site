@@ -1,92 +1,71 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    ContentModels.Home root = Model.Root() as ContentModels.Home;
+}
 
 <header class="header bg-light">
     <div class="container pt-2 pb-2">
 
         <nav class="w-100">
             <div class="container-fluid d-flex">
-                <a class="d-block" href="#">
-                    <img class="header__logo-img" src="~/images/logo.png" alt="logo">
-                </a>
+                @if (!string.IsNullOrWhiteSpace(root.THeaderLogo.MediaItem.Url))
+                {
+                    <a class="d-block" href="#">
+                        <img class="header__logo-img" src="@root.THeaderLogo.MediaItem.Url" alt="logo">
+                    </a>
+                }
+
                 <div class="flex-grow-1 d-flex align-items-center justify-content-lg-between justify-content-end">
 
-                    <ul class="d-none d-lg-flex flex-grow-1 mb-0 ">
-                        <li class="me-3 position-relative list-nav">
-                            <a href="#">Products</a>
-
-                            <ul class="position-absolute p-0 ms-1 d-block">
-
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Salesmatrix</a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">SWOT</a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Dashboards</a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Consulting</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="me-3 position-relative list-nav">
-                            <a href="#">Industries</a>
-
-                            <ul class="position-absolute p-0 ms-1">
-
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Wholesale Distribution </a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Manufacturing</a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Consulting</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="me-3 position-relative list-nav">
-                            <a href="#">Support</a>
-
-                            <ul class="position-absolute p-0 ms-1">
-
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Salesmatrix Support Site (Link) </a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">SWOT Support Site (Link) </a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Downloads</a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">Salesmatrix Online Help </a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="#" class="d-block">SWOT Online Help </a>
-                                </li>
-
-                            </ul>
-                        </li>
+                    @if (root.THeaderMenuItems.Any())
+                    {
+                        <ul class="d-none d-lg-flex flex-grow-1 mb-0 flex-wrap">
 
 
-                        <li class="me-3">
-                            <a href="#">News</a>
-                        </li>
+                            @foreach (var item in root.THeaderMenuItems)
+                            {
+                                Umbraco.Web.Models.Link link = item.TLink as Umbraco.Web.Models.Link;
 
-                        <li class="me-3">
-                            <a href="#">About us</a>
-                        </li>
+                                if (string.IsNullOrWhiteSpace(item.TCaption) || string.IsNullOrWhiteSpace(link.Url))
+                                {
+                                    continue;
+                                }
 
-                        <li class="me-3">
-                            <a href="#">Request a demo</a>
-                        </li>
-                    </ul>
+                                if (item.TSubMenuItems.Any())
+                                {
+                                    <li class="me-3 position-relative list-nav">
+                                        <a href="@link.Url">@item.TCaption</a>
+
+                                        <ul class="position-absolute p-0 ms-1 d-block">
+
+                                            @foreach (var subItem in item.TSubMenuItems)
+                                            {
+                                                Umbraco.Web.Models.Link subLink = subItem.TLink as Umbraco.Web.Models.Link;
+
+                                                if (string.IsNullOrWhiteSpace(subItem.TCaption) || string.IsNullOrWhiteSpace(subLink.Url))
+                                                {
+                                                    continue;
+                                                }
+
+                                                <li class="p-1">
+                                                    <a href="@subLink.Url" class="d-block">@subItem.TCaption</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="me-3">
+                                        <a href="@link.Url">@item.TCaption</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
+                    }
+
                     <form class="d-none d-lg-block">
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control header__input-search" placeholder="Search"
@@ -117,8 +96,8 @@
                         </ul>
                     </form>
 
-
                     <button class="btn-menu d-lg-none" type="button"></button>
+
                     <div class="position-absolute top-0 start-0 mobile-menu d-lg-none d-block">
                         <div class="d-flex justify-content-end p-3">
                             <button type="button" class="btn-close-menu p-2"></button>
@@ -138,108 +117,63 @@
 
 
                         <div class="p-3">
-                            <ul class="ps-2">
-                                <li class="mobile-menu__list-nav mobile-menu__item">
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" class="p-2 d-block w-100">Products</a>
 
-                                        <button type="button" class="mobile-menu__btn-open">&#709</button>
-                                        <button type="button"
-                                                class="mobile-menu__btn-close d-none">
-                                            &#708;
-                                        </button>
-                                    </div>
+                            @if (root.THeaderMenuItems.Any())
+                            {
+                                <ul class="ps-2">
 
-                                    <ul class="ps-2">
+                                    @foreach (var item in root.THeaderMenuItems)
+                                    {
+                                        Umbraco.Web.Models.Link link = item.TLink as Umbraco.Web.Models.Link;
 
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Salesmatrix</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">SWOT</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Dashboards</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Consulting</a>
-                                        </li>
+                                        if (string.IsNullOrWhiteSpace(item.TCaption) || string.IsNullOrWhiteSpace(link.Url))
+                                        {
+                                            continue;
+                                        }
 
-                                    </ul>
-                                </li>
+                                        if (item.TSubMenuItems.Any())
+                                        {
+                                            <li class="mobile-menu__list-nav mobile-menu__item">
+                                                <div class="d-flex justify-content-between">
+                                                    <a href="@link.Url" class="p-2 d-block w-100">@item.TCaption</a>
 
-                                <li class="mobile-menu__list-nav mobile-menu__item">
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" class="p-2 d-block w-100">Industries</a>
+                                                    <button type="button" class="mobile-menu__btn-open">&#709</button>
+                                                    <button type="button"
+                                                            class="mobile-menu__btn-close d-none">
+                                                        &#708;
+                                                    </button>
+                                                </div>
 
-                                        <button type="button" class="mobile-menu__btn-open">&#709</button>
-                                        <button type="button"
-                                                class="mobile-menu__btn-close d-none">
-                                            &#708;
-                                        </button>
-                                    </div>
+                                                <ul class="ps-2">
 
-                                    <ul class="ps-2">
+                                                    @foreach (var subItem in item.TSubMenuItems)
+                                                    {
+                                                        Umbraco.Web.Models.Link subLink = subItem.TLink as Umbraco.Web.Models.Link;
 
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Wholesale Distribution</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Manufacturing</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Consulting</a>
-                                        </li>
+                                                        if (string.IsNullOrWhiteSpace(subItem.TCaption) || string.IsNullOrWhiteSpace(subLink.Url))
+                                                        {
+                                                            continue;
+                                                        }
 
-                                    </ul>
-                                </li>
+                                                        <li class="p-2">
+                                                            <a href="@subLink.Url" class="d-block">@subItem.TCaption</a>
+                                                        </li>
 
-                                <li class="mobile-menu__list-nav mobile-menu__item">
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" class="p-2 d-block w-100">Support</a>
+                                                    }
 
-                                        <button type="button" class="mobile-menu__btn-open">&#709</button>
-                                        <button type="button"
-                                                class="mobile-menu__btn-close d-none">
-                                            &#708;
-                                        </button>
-                                    </div>
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="mobile-menu__item">
+                                                <a href="@link.Url" class="p-2 d-block">@item.TCaption</a>
+                                            </li>
 
-                                    <ul class="ps-2">
-
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Salesmatrix Support Site (Link)</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">SWOT Support Site (Link)</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Downloads</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">Salesmatrix Online Help</a>
-                                        </li>
-                                        <li class="p-2">
-                                            <a href="#" class="d-block">SWOT Online Help</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-
-                                <li class="mobile-menu__item">
-                                    <a href="#" class="p-2 d-block">News</a>
-                                </li>
-
-                                <li class="mobile-menu__item">
-                                    <a href="#" class="p-2 d-block">About us</a>
-                                </li>
-
-                                <li class="mobile-menu__item">
-                                    <a href="#" class="p-2 d-block">Request a demo</a>
-                                </li>
-
-                            </ul>
+                                        }
+                                    }
+                                </ul>
+                            }
                         </div>
 
                         <form class="position-relative btn-language ms-4">
@@ -297,6 +231,7 @@
                         </form>
                     </div>
                 </div>
+
             </div>
         </nav>
 

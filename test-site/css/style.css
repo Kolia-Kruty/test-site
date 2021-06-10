@@ -191,7 +191,6 @@ p {
 
 /* page Home */
 .top {
-  background-image: url("../images/top-home-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
