@@ -23,14 +23,9 @@
                         <ul class="d-none d-lg-flex flex-grow-1 mb-0 flex-wrap">
 
 
-                            @foreach (var item in root.THeaderMenuItems)
+                            @foreach (HeaderMenuItems item in root.THeaderMenuItems)
                             {
                                 Umbraco.Web.Models.Link link = item.TLink as Umbraco.Web.Models.Link;
-
-                                if (string.IsNullOrWhiteSpace(item.TCaption) || string.IsNullOrWhiteSpace(link.Url))
-                                {
-                                    continue;
-                                }
 
                                 if (item.TSubMenuItems.Any())
                                 {
@@ -42,11 +37,6 @@
                                             @foreach (var subItem in item.TSubMenuItems)
                                             {
                                                 Umbraco.Web.Models.Link subLink = subItem.TLink as Umbraco.Web.Models.Link;
-
-                                                if (string.IsNullOrWhiteSpace(subItem.TCaption) || string.IsNullOrWhiteSpace(subLink.Url))
-                                                {
-                                                    continue;
-                                                }
 
                                                 <li class="p-1">
                                                     <a href="@subLink.Url" class="d-block">@subItem.TCaption</a>

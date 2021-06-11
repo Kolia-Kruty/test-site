@@ -19,9 +19,22 @@ using Umbraco.ModelsBuilder.Embedded;
 
 namespace Umbraco.Web.PublishedModels
 {
+	// Mixin Content Type with alias "mainImageControls"
+	/// <summary>Main Image Controls</summary>
+	public partial interface IMainImageControls : IPublishedContent
+	{
+		/// <summary>MainImage</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		global::Umbraco.Core.Models.MediaWithCrops TMainImage { get; }
+
+		/// <summary>Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		string TTitle { get; }
+	}
+
 	/// <summary>Main Image Controls</summary>
 	[PublishedModel("mainImageControls")]
-	public partial class MainImageControls : PublishedContentModel
+	public partial class MainImageControls : PublishedContentModel, IMainImageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -49,13 +62,21 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tMainImage")]
-		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>("tMainImage");
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => GetTMainImage(this);
+
+		/// <summary>Static getter for MainImage</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static global::Umbraco.Core.Models.MediaWithCrops GetTMainImage(IMainImageControls that) => that.Value<global::Umbraco.Core.Models.MediaWithCrops>("tMainImage");
 
 		///<summary>
-		/// Title: Enter text for image
+		/// Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tTitle")]
-		public virtual string TTitle => this.Value<string>("tTitle");
+		public virtual string TTitle => GetTTitle(this);
+
+		/// <summary>Static getter for Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static string GetTTitle(IMainImageControls that) => that.Value<string>("tTitle");
 	}
 }

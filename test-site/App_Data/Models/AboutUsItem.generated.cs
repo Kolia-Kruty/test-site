@@ -21,7 +21,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>About Us Item</summary>
 	[PublishedModel("aboutUsItem")]
-	public partial class AboutUsItem : PublishedContentModel
+	public partial class AboutUsItem : PublishedContentModel, IMainImageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -43,5 +43,33 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tContent")]
+		public virtual global::System.Web.IHtmlString TContent => this.Value<global::System.Web.IHtmlString>("tContent");
+
+		///<summary>
+		/// Map: Please enter the iframe tag from google
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tMap")]
+		public virtual global::System.Web.IHtmlString TMap => this.Value<global::System.Web.IHtmlString>("tMap");
+
+		///<summary>
+		/// MainImage: Enter main image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tMainImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetTMainImage(this);
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => global::Umbraco.Web.PublishedModels.MainImageControls.GetTTitle(this);
 	}
 }

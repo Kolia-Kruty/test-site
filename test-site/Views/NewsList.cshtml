@@ -60,13 +60,13 @@
                             @if (sortDate == "Desc")
                             {
                                 <a type="button" class="table__sort-date" href="@($"{Model.Url}?page={page}&sortDate=Asc")">
-                                    &#9650
+                                    &#9660
                                 </a>
                             }
                             else
                             {
                                 <a type="button" class="table__sort-date" href="@($"{Model.Url}?page={page}&sortDate=Desc")">
-                                    &#9660
+                                    &#9650
                                 </a>
                             }
                         </th>

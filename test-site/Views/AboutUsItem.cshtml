@@ -1,7 +1,24 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<AboutUsItem>
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+
 }
 
-@* the fun starts here *@
+<main class=" container">
+    <h1 class="text-center mt-3">@Model.TTitle</h1>
 
+    <section class="container mt-3 mb-3 top" style="background-image: url( @Model.TMainImage.MediaItem.Url)">
+    </section>
+
+    <section>
+        @Model.TContent
+    </section>
+
+    <section class="mb-2">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81609.2425897097!2d28.60367796088497!3d50.267865406378924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472c64a32bfa355d%3A0xf14ad2a3d9b9e229!2z0JbQuNGC0L7QvNC40YAsINCW0LjRgtC-0LzQuNGA0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDEwMDAw!5e0!3m2!1suk!2sua!4v1623051556980!5m2!1suk!2sua"
+                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    @Html.Partial("Test-site/TContactForm")
+
+</main>
