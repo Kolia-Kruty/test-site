@@ -33,7 +33,8 @@ namespace test_site.Controllers
                 success = SendEmail(model);
             }
 
-            TempData["InfoMessageHtml"] = success ? "<divclass=\"alert alert - success\" role=\"alert\">A simple success alert—check it out!</ div > " : "error";
+            TempData["InfoMessageHtml"] = success ? "<div class=\"alert alert-success\" role=\"alert\"> Success! </div>" 
+                : "<div class=\"alert alert-danger\" role=\"alert\"> Error! </div>";
 
             return CurrentUmbracoPage();
         }

@@ -16,16 +16,16 @@
                       required></textarea>
         </div>
 
-        if (TempData["InfoMessageHtml"] != null)
-        {
-            <div class="alert alert-primary m-3" role="alert">
-                @Html.Raw(TempData["InfoMessageHtml"])
-            </div>
-        }
-
         <div class="col-12 d-flex flex-column flex-sm-row-reverse">
             <button class="btn btn-primary " type="submit">Send message</button>
         </div>
+
+        if (TempData["InfoMessageHtml"] != null)
+        {
+            @Html.Raw(TempData["InfoMessageHtml"])
+
+        }
+
     }
 
 </section>

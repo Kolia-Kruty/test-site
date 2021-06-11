@@ -71,7 +71,6 @@ $(document).ready(function () {
 
     // --- 
 
-
     $(".header .list-nav").mouseover(function () {
         $(this).find("ul").addClass("list-nav__link-active");
     });
