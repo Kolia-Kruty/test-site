@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ProductItem>
+@{
+    Layout = "Master.cshtml";
+}
+
+
+<main class="container mt-3">
+    <h1 class="text-center">@(!string.IsNullOrWhiteSpace(Model.TTitle) ? Model.TTitle : Model.Name)</h1>
+    <p class="text-end">@Model.TDate.Date.ToString("dd.MM.yyyy")</p>
+    <div class="d-flex justify-content-center w-100 mb-4">
+        <img src="@Model.TMainImage.MediaItem.Url" class="product__img" alt="img">
+    </div>
+
+    @Model.TContent
+</main>

@@ -19,49 +19,64 @@ using Umbraco.ModelsBuilder.Embedded;
 
 namespace Umbraco.Web.PublishedModels
 {
-	// Mixin Content Type with alias "keyWords"
-	/// <summary>Key Words Controls</summary>
-	public partial interface IKeyWords : IPublishedContent
-	{
-		/// <summary>Key Words</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		global::System.Collections.Generic.IEnumerable<string> TKeyWords { get; }
-	}
-
-	/// <summary>Key Words Controls</summary>
-	[PublishedModel("keyWords")]
-	public partial class KeyWords : PublishedContentModel, IKeyWords
+	/// <summary>Product Item</summary>
+	[PublishedModel("productItem")]
+	public partial class ProductItem : PublishedContentModel, IContentControls, IDescriptionControls, IMainImageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public new const string ModelTypeAlias = "keyWords";
+		public new const string ModelTypeAlias = "productItem";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<KeyWords, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ProductItem, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public KeyWords(IPublishedContent content)
+		public ProductItem(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Key Words
+		/// Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		[ImplementPropertyType("tKeyWords")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TKeyWords => GetTKeyWords(this);
+		[ImplementPropertyType("tDate")]
+		public virtual global::System.DateTime TDate => this.Value<global::System.DateTime>("tDate");
 
-		/// <summary>Static getter for Key Words</summary>
+		///<summary>
+		/// Content
+		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public static global::System.Collections.Generic.IEnumerable<string> GetTKeyWords(IKeyWords that) => that.Value<global::System.Collections.Generic.IEnumerable<string>>("tKeyWords");
+		[ImplementPropertyType("tContent")]
+		public virtual global::System.Web.IHtmlString TContent => global::Umbraco.Web.PublishedModels.ContentControls.GetTContent(this);
+
+		///<summary>
+		/// Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDescription")]
+		public virtual string TDescription => global::Umbraco.Web.PublishedModels.DescriptionControls.GetTDescription(this);
+
+		///<summary>
+		/// MainImage: Enter main image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tMainImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops TMainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetTMainImage(this);
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => global::Umbraco.Web.PublishedModels.MainImageControls.GetTTitle(this);
 	}
 }

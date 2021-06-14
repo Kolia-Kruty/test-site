@@ -1,0 +1,99 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ProductList>
+@{
+    Layout = "Master.cshtml";
+
+    int amountProducts = (int)(Model.TAmountBlocks);
+
+    var listProducts = Model.Children<ProductItem>();
+
+    double maxPage = Math.Round((double)(listProducts.Count()) / amountProducts);
+
+    if (int.TryParse(Request.QueryString["page"], out int page))
+    {
+        if (page < 1 || page > maxPage)
+        {
+            Response.Redirect(Model.Url);
+        }
+    }
+    else
+    {
+        page = 1;
+    }
+
+    var sortedListProducts = listProducts.Skip(amountProducts * (page - 1)).Take(amountProducts).ToList();
+
+}
+
+
+<main class="container">
+
+    @if (!sortedListProducts.Any())
+    {
+        <p class="p-4 text-center alert-danger mt-4">
+            Don`t find products
+        </p>
+    }
+    else
+    {
+        <p class="mt-3">
+            @Model.TDescription
+        </p>
+
+        <section class="row p-1">
+
+            @foreach (var item in sortedListProducts)
+            {
+                <div class="col-12 col-md-6 p-0">
+                    <div class="m-2 p-2 border">
+                        <a class="d-flex text-decoration-none position-relative products" href="@item.Url">
+                            <img class="d-block products__img" src="@item.TMainImage.MediaItem.Url" alt="@item.TMainImage.MediaItem.Name">
+
+                            <div class=" ms-2 me-2 ">
+                                <h4 class="products__title-content">
+                                    @item.TTitle
+                                </h4>
+                                <p class="mt-3 products__content mb-0">
+                                    @item.TDescription
+                                </p>
+                                <p class="products__date position-absolute m-0">
+                                    @item.TDate.Date.ToString("dd.MM.yyyy")
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </section>
+
+        <section class="pagination-site d-flex justify-content-center pt-2">
+            <ul class="d-flex p-0">
+
+                <li class="@((page-1)<1 ? "d-none" : "" )">
+                    <a href="@($"{Model.Url}?page={page-1}")">
+                        &#129152
+                    </a>
+                </li>
+
+                <li class="@((page-3)<1 ? "d-none" : "" )"><a href="@($"{Model.Url}?page={1}")">1</a></li>
+                <li class="@((page-4)<1 ? "d-none" : "" )"><span>...</span></li>
+                <li class="@((page-2)<1 ? "d-none" : "" )"><a href="@($"{Model.Url}?page={page-2}")">@(page-2)</a></li>
+                <li class="@((page-1)<1 ? "d-none" : "" )"><a href="@($"{Model.Url}?page={page-1}")">@(page-1)</a></li>
+
+                <li><a href="@($"{Model.Url}?page={page}")" class="active">@(page)</a></li>
+
+                <li class="@((page+1)>maxPage ? "d-none" : "" )"><a href="@($"{Model.Url}?page={page+1}")">@(page+1)</a></li>
+                <li class="@((page+2)>maxPage ? "d-none" : "" )"><a href="@($"{Model.Url}?page={page+2}")">@(page+2)</a></li>
+                <li class="@((page+4)>maxPage ? "d-none" : "" )"><span>...</span></li>
+                <li class="@((page+3)>maxPage ? "d-none" : "" )"><a href="@($"{Model.Url}?page={maxPage}")">@maxPage</a></li>
+
+                <li class="@((page+1)>maxPage ? "d-none" : "" )">
+                    <a href="@($"{Model.Url}?page={page+1}")">
+                        &#129154
+                    </a>
+                </li>
+            </ul>
+        </section>
+    }
+
+</main>

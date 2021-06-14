@@ -321,7 +321,8 @@
     <Compile Include="App_Data\Models\AboutUsList.generated.cs" />
     <Compile Include="App_Data\Models\Article.generated.cs" />
     <Compile Include="App_Data\Models\Audio.generated.cs" />
-    <Compile Include="App_Data\Models\Description.generated.cs" />
+    <Compile Include="App_Data\Models\ContentControls.generated.cs" />
+    <Compile Include="App_Data\Models\DescriptionControls.generated.cs" />
     <Compile Include="App_Data\Models\File.generated.cs" />
     <Compile Include="App_Data\Models\Folder.generated.cs" />
     <Compile Include="App_Data\Models\FooterContainer.generated.cs" />
@@ -331,7 +332,7 @@
     <Compile Include="App_Data\Models\Home.generated.cs" />
     <Compile Include="App_Data\Models\Image.generated.cs" />
     <Compile Include="App_Data\Models\ImageWithTextControls.generated.cs" />
-    <Compile Include="App_Data\Models\KeyWords.generated.cs" />
+    <Compile Include="App_Data\Models\KeyWordsControls.generated.cs" />
     <Compile Include="App_Data\Models\LocalizationContainer.generated.cs" />
     <Compile Include="App_Data\Models\LocalizationLanguageItems.generated.cs" />
     <Compile Include="App_Data\Models\MainImageControls.generated.cs" />
@@ -339,6 +340,9 @@
     <Compile Include="App_Data\Models\NewsControls.generated.cs" />
     <Compile Include="App_Data\Models\NewsItem.generated.cs" />
     <Compile Include="App_Data\Models\NewsList.generated.cs" />
+    <Compile Include="App_Data\Models\ProductItem.generated.cs" />
+    <Compile Include="App_Data\Models\ProductList.generated.cs" />
+    <Compile Include="App_Data\Models\SettingBlocksControls.generated.cs" />
     <Compile Include="App_Data\Models\VectorGraphics.generated.cs" />
     <Compile Include="App_Data\Models\Video.generated.cs" />
     <Compile Include="Controllers\AboutUsListController.cs" />
@@ -381,6 +385,8 @@
     <Content Include="Views\NewsList.cshtml" />
     <Content Include="Views\AboutUsItem.cshtml" />
     <Content Include="Views\NewsItem.cshtml" />
+    <Content Include="Views\ProductItem.cshtml" />
+    <Content Include="Views\ProductList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

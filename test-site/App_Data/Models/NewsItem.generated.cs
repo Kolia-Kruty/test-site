@@ -21,7 +21,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>News Item</summary>
 	[PublishedModel("newsItem")]
-	public partial class NewsItem : PublishedContentModel, IKeyWords
+	public partial class NewsItem : PublishedContentModel, IKeyWordsControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -84,6 +84,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tKeyWords")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TKeyWords => global::Umbraco.Web.PublishedModels.KeyWords.GetTKeyWords(this);
+		public virtual global::System.Collections.Generic.IEnumerable<string> TKeyWords => global::Umbraco.Web.PublishedModels.KeyWordsControls.GetTKeyWords(this);
 	}
 }

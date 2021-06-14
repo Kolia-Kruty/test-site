@@ -19,26 +19,35 @@ using Umbraco.ModelsBuilder.Embedded;
 
 namespace Umbraco.Web.PublishedModels
 {
+	// Mixin Content Type with alias "descriptionControls"
 	/// <summary>Description Controls</summary>
-	[PublishedModel("description")]
-	public partial class Description : PublishedContentModel
+	public partial interface IDescriptionControls : IPublishedContent
+	{
+		/// <summary>Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		string TDescription { get; }
+	}
+
+	/// <summary>Description Controls</summary>
+	[PublishedModel("descriptionControls")]
+	public partial class DescriptionControls : PublishedContentModel, IDescriptionControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public new const string ModelTypeAlias = "description";
+		public new const string ModelTypeAlias = "descriptionControls";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Description, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<DescriptionControls, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public Description(IPublishedContent content)
+		public DescriptionControls(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -49,6 +58,10 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tDescription")]
-		public virtual string TDescription => this.Value<string>("tDescription");
+		public virtual string TDescription => GetTDescription(this);
+
+		/// <summary>Static getter for Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		public static string GetTDescription(IDescriptionControls that) => that.Value<string>("tDescription");
 	}
 }
