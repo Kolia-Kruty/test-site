@@ -1,4 +1,4 @@
-$(document).ready(function () {
+    $(document).ready(function () {
 
     var btnLanguage = undefined
 
@@ -30,13 +30,6 @@ $(document).ready(function () {
 
         var linkImg = $(this).css("background-image")
         $(".btn-language__main").css("background-image", linkImg)
-
-        var language = $(this).data("language")
-
-        if (language) {
-            $("#language").val(language);
-        }
-
 
         $(btnLanguage[0].parentNode).find(".btn-language__list").css("height", "0");
         btnLanguage = undefined;

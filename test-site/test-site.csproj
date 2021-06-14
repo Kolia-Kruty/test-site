@@ -332,6 +332,8 @@
     <Compile Include="App_Data\Models\Image.generated.cs" />
     <Compile Include="App_Data\Models\ImageWithTextControls.generated.cs" />
     <Compile Include="App_Data\Models\KeyWords.generated.cs" />
+    <Compile Include="App_Data\Models\LocalizationContainer.generated.cs" />
+    <Compile Include="App_Data\Models\LocalizationLanguageItems.generated.cs" />
     <Compile Include="App_Data\Models\MainImageControls.generated.cs" />
     <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="App_Data\Models\NewsControls.generated.cs" />
@@ -339,7 +341,9 @@
     <Compile Include="App_Data\Models\NewsList.generated.cs" />
     <Compile Include="App_Data\Models\VectorGraphics.generated.cs" />
     <Compile Include="App_Data\Models\Video.generated.cs" />
+    <Compile Include="Controllers\AboutUsListController.cs" />
     <Compile Include="Controllers\ContactSurfaceController.cs" />
+    <Compile Include="Controllers\LocalizationSurfaceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
   </ItemGroup>
@@ -384,7 +388,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\AboutUs\" />
+    <Folder Include="Views\LocalizationSurface\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

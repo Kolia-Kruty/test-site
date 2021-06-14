@@ -21,7 +21,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel, IFooterContainer, IHeaderContainer, IImageWithTextControls
+	public partial class Home : PublishedContentModel, IFooterContainer, IHeaderContainer, IImageWithTextControls, ILocalizationContainer
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -92,5 +92,19 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tText")]
 		public virtual string TText => global::Umbraco.Web.PublishedModels.ImageWithTextControls.GetTText(this);
+
+		///<summary>
+		/// Default language
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tDefaultLanguage")]
+		public virtual global::Umbraco.Web.Models.Link TDefaultLanguage => global::Umbraco.Web.PublishedModels.LocalizationContainer.GetTDefaultLanguage(this);
+
+		///<summary>
+		/// Language - About Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tLanguageAboutPage")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.LocalizationLanguageItems> TLanguageAboutPage => global::Umbraco.Web.PublishedModels.LocalizationContainer.GetTLanguageAboutPage(this);
 	}
 }

@@ -1,12 +1,22 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
-    ContentModels.Home root = Model.Root() as ContentModels.Home;
+    var root = Model.Root() as ContentModels.Home;
+
+    var language = Session["language"];
+
+    if (language == null)
+    {
+        language = root.TDefaultLanguage?.Name ?? "";
+    }
+
+    var defaultLanguage = root.TLanguageAboutPage.Where(w => w.TLink.Name == (string)language).FirstOrDefault();
+
 }
+
 
 <header class="header bg-light">
     <div class="container pt-2 pb-2">
-
         <nav class="w-100">
             <div class="container-fluid d-flex">
                 @if (!string.IsNullOrWhiteSpace(root.THeaderLogo.MediaItem.Url))
@@ -21,7 +31,6 @@
                     @if (root.THeaderMenuItems.Any())
                     {
                         <ul class="d-none d-lg-flex flex-grow-1 mb-0 flex-wrap">
-
 
                             @foreach (HeaderMenuItems item in root.THeaderMenuItems)
                             {
@@ -66,25 +75,24 @@
                         </div>
                     </form>
 
-                    <form class="d-none d-lg-block position-relative btn-language">
-                        <input type="text" id="language" class="d-none" name="language">
-                        <button type="button" class="btn-language__main"></button>
 
-                        <ul class="btn-language__list position-absolute left-0 p-0 m-0 mt-1">
-                            <li class="mt-1">
-                                <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                            </li>
-                            <li class="mt-1">
-                                <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                            </li>
-                            <li class="mt-1">
-                                <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                            </li>
-                            <li class="mt-1">
-                                <button class="btn-language__list__item" data-language="pol" type="button"></button>
-                            </li>
+                    <div class="d-none d-lg-block position-relative btn-language">
+                        <button type="button" class="btn-language__main" style="background-image: url(@defaultLanguage.TFlag.MediaItem.Url)"></button>
+
+                        <ul class="btn-language__list position-absolute left-0 p-0 m-0 mt-1 zindex-dropdown">
+                            @foreach (var item in root.TLanguageAboutPage)
+                            {
+                                <li class="mt-1">
+                                    @using (Html.BeginUmbracoForm("SaveLanguage", "LocalizationSurface", Model))
+                                    {
+                                        <input type="text" class="d-none" name="language" value="@item.TLink.Name">
+                                        <button class="btn-language__list__item" type="submit" style="background-image: url(@item.TFlag.MediaItem.Url)"></button>
+                                    }
+                                </li>
+                            }
+
                         </ul>
-                    </form>
+                    </div>
 
                     <button class="btn-menu d-lg-none" type="button"></button>
 
@@ -103,8 +111,6 @@
                                 </button>
                             </div>
                         </form>
-
-
 
                         <div class="p-3">
 
@@ -166,64 +172,27 @@
                             }
                         </div>
 
-                        <form class="position-relative btn-language ms-4">
+                        <div class="position-relative btn-language ms-4">
 
-                            <input type="text" id="language" class="d-none" name="language">
-                            <button type="button" class="btn-language__main"></button>
+                            <button type="button" class="btn-language__main" style="background-image: url(@defaultLanguage.TFlag.MediaItem.Url)"></button>
 
                             <ul class="btn-language__list position-absolute left-0  p-0 m-0 mt-1 d-flex flex-wrap">
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="ukr" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="eng" type="button"></button>
-                                </li>
-                                <li class="mt-1">
-                                    <button class="btn-language__list__item" data-language="rus" type="button"></button>
-                                </li>
+
+                                @foreach (var item in root.TLanguageAboutPage)
+                                {
+                                    <li class="mt-1 pb-1">
+                                        @using (Html.BeginUmbracoForm("SaveLanguage", "LocalizationSurface", Model))
+                                        {
+                                            <input type="text" class="d-none" name="language" value="@item.TLink.Name">
+                                            <button class="btn-language__list__item" type="submit" style="background-image: url(@item.TFlag.MediaItem.Url)"></button>
+                                        }
+                                    </li>
+                                }
                             </ul>
-                        </form>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </nav>
-
     </div>
 </header>

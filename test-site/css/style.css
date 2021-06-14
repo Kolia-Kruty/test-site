@@ -36,17 +36,9 @@ p {
   box-shadow: 0 0 5px 1px #000;
 }
 
-.btn-language__main{
-  background-image: url("../images/icons/romania.png");
-}
-
 .btn-language__list {
   overflow: hidden;
   height: 0;
-}
-
-.btn-language__list button{
-  background-image: url("../images/icons/ukraine.png");
 }
 
 .btn-menu,
