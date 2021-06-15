@@ -1,0 +1,196 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    var root = Model.Root() as ContentModels.Home;
+
+    var language = Session["language"];
+
+    if (language == null)
+    {
+        language = root.TDefaultLanguage?.Name ?? "";
+    }
+
+    var defaultLanguage = root.TLanguageAboutPage.Where(w => w.TLink.Name == (string)language).FirstOrDefault();
+}
+
+<header class="header bg-light">
+    <div class="container pt-2 pb-2">
+        <nav class="w-100">
+            <div class="container-fluid d-flex">
+                @if (!string.IsNullOrWhiteSpace(root.THeaderLogo.MediaItem.Url))
+                {
+                    <a class="d-block" href="/">
+                        <img class="header__logo-img" src="@root.THeaderLogo.MediaItem.Url" alt="logo">
+                    </a>
+                }
+
+                <div class="flex-grow-1 d-flex align-items-center justify-content-lg-between justify-content-end">
+
+                    @if (root.THeaderMenuItems.Any())
+                    {
+                        <ul class="d-none d-lg-flex flex-grow-1 mb-0 flex-wrap">
+
+                            @foreach (HeaderMenuItems item in root.THeaderMenuItems)
+                            {
+                                Umbraco.Web.Models.Link link = item.TLink as Umbraco.Web.Models.Link;
+
+                                if (item.TSubMenuItems.Any())
+                                {
+                                    <li class="me-3 position-relative list-nav">
+                                        <a href="@link.Url">@item.TCaption</a>
+
+                                        <ul class="position-absolute p-0 ms-1 d-block">
+
+                                            @foreach (var subItem in item.TSubMenuItems)
+                                            {
+                                                Umbraco.Web.Models.Link subLink = subItem.TLink as Umbraco.Web.Models.Link;
+
+                                                <li class="p-1">
+                                                    <a href="@subLink.Url" class="d-block">@subItem.TCaption</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="me-3">
+                                        <a href="@link.Url">@item.TCaption</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
+                    }
+
+                    <form class="d-none d-lg-block">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control header__input-search" placeholder="Search"
+                                   aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn header__btn-search " type="button" id="button-addon2">
+                                &#128269
+                            </button>
+                        </div>
+                    </form>
+
+
+                    <div class="d-none d-lg-block position-relative btn-language">
+                        <button type="button" class="btn-language__main" style="background-image: url(@defaultLanguage.TFlag.MediaItem.Url)"></button>
+
+                        <ul class="btn-language__list position-absolute left-0 p-0 m-0 mt-1 zindex-dropdown">
+                            @foreach (var item in root.TLanguageAboutPage)
+                            {
+                                <li class="mt-1">
+                                    @using (Html.BeginUmbracoForm("SaveLanguage", "LocalizationSurface", Model))
+                                    {
+                                        <input type="text" class="d-none" name="language" value="@item.TLink.Name">
+                                        <button class="btn-language__list__item" type="submit" style="background-image: url(@item.TFlag.MediaItem.Url)"></button>
+                                    }
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <button class="btn-menu d-lg-none" type="button"></button>
+
+                    <div class="position-absolute top-0 start-0 mobile-menu d-lg-none d-block">
+                        <div class="d-flex justify-content-end p-3">
+                            <button type="button" class="btn-close-menu p-2"></button>
+                        </div>
+
+                        <form class="mx-4 my-2">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control header__input-search"
+                                       placeholder="Search" aria-label="Recipient's username"
+                                       aria-describedby="button-addon2">
+                                <button class="btn header__btn-search " type="button" id="button-addon2">
+                                    &#128269
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="p-3">
+
+                            @if (root.THeaderMenuItems.Any())
+                            {
+                                <ul class="ps-2">
+
+                                    @foreach (var item in root.THeaderMenuItems)
+                                    {
+                                        Umbraco.Web.Models.Link link = item.TLink as Umbraco.Web.Models.Link;
+
+                                        if (string.IsNullOrWhiteSpace(item.TCaption) || string.IsNullOrWhiteSpace(link.Url))
+                                        {
+                                            continue;
+                                        }
+
+                                        if (item.TSubMenuItems.Any())
+                                        {
+                                            <li class="mobile-menu__list-nav mobile-menu__item">
+                                                <div class="d-flex justify-content-between">
+                                                    <a href="@link.Url" class="p-2 d-block w-100">@item.TCaption</a>
+
+                                                    <button type="button" class="mobile-menu__btn-open">&#709</button>
+                                                    <button type="button"
+                                                            class="mobile-menu__btn-close d-none">
+                                                        &#708;
+                                                    </button>
+                                                </div>
+
+                                                <ul class="ps-2">
+
+                                                    @foreach (var subItem in item.TSubMenuItems)
+                                                    {
+                                                        Umbraco.Web.Models.Link subLink = subItem.TLink as Umbraco.Web.Models.Link;
+
+                                                        if (string.IsNullOrWhiteSpace(subItem.TCaption) || string.IsNullOrWhiteSpace(subLink.Url))
+                                                        {
+                                                            continue;
+                                                        }
+
+                                                        <li class="p-2">
+                                                            <a href="@subLink.Url" class="d-block">@subItem.TCaption</a>
+                                                        </li>
+
+                                                    }
+
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="mobile-menu__item">
+                                                <a href="@link.Url" class="p-2 d-block">@item.TCaption</a>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                            }
+                        </div>
+
+                        <div class="position-relative btn-language ms-4">
+
+                            <button type="button" class="btn-language__main" style="background-image: url(@defaultLanguage.TFlag.MediaItem.Url)"></button>
+
+                            <ul class="btn-language__list position-absolute left-0  p-0 m-0 mt-1 d-flex flex-wrap">
+
+                                @foreach (var item in root.TLanguageAboutPage)
+                                {
+                                    <li class="mt-1 pb-1">
+                                        @using (Html.BeginUmbracoForm("SaveLanguage", "LocalizationSurface", Model))
+                                        {
+                                            <input type="text" class="d-none" name="language" value="@item.TLink.Name">
+                                            <button class="btn-language__list__item" type="submit" style="background-image: url(@item.TFlag.MediaItem.Url)"></button>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
