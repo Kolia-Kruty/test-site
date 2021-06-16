@@ -15,17 +15,22 @@ namespace test_site.Controllers
         {
             Session["language"] = language;
 
-            var aboutUsList = Umbraco.Content(1235);
+            var root = Umbraco.ContentAtRoot();
 
-            var requestUrl = Request.RawUrl;
-
-            var wordsUrl = requestUrl.Split('/');
-
-            if (wordsUrl.Count() > 2)
+            if (root.FirstOrDefault() is Home home)
             {
-                if( wordsUrl[1] == aboutUsList.UrlSegment)
+                var aboutUsList = home.Children.Where(w => w is AboutUsList).FirstOrDefault();
+
+                var requestUrl = Request.RawUrl;
+
+                var wordsUrl = requestUrl.Split('/');
+
+                if (wordsUrl.Count() > 2)
                 {
-                    return Redirect(aboutUsList.Url);
+                    if (wordsUrl[1] == aboutUsList?.UrlSegment)
+                    {
+                        return Redirect(aboutUsList.Url);
+                    }
                 }
             }
 

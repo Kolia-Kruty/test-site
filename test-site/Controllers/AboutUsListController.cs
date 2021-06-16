@@ -23,7 +23,7 @@ namespace test_site.Controllers
                 return CurrentTemplate(model);
             }
 
-            var aboutUsItems = aboutUsList.Descendants<AboutUsItem>().ToList();
+            var aboutUsItems = aboutUsList.Descendants<AboutUsItem>();
 
             var language = Session["language"];
 

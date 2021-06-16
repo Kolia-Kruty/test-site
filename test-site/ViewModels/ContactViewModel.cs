@@ -18,5 +18,7 @@ namespace test_site.ViewModels
         [Required]
         [MaxLength(500)]
         public string Message { get; set; }
+
+        public int? User { get; set; }
     }
 }

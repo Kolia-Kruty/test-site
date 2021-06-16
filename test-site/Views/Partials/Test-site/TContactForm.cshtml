@@ -1,4 +1,9 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{ 
+    var model = Model;
+
+}
+
 
 <section class="container mb-3 bg-light border">
 
@@ -6,6 +11,9 @@
     {
         @Html.AntiForgeryToken()
         <h3 class="text-center">Contact form</h3>
+        <div class="d-none">
+            <input type="number" name="User" value="@Model.Value("TUser")">
+        </div>
         <div class="col-12 col-sm-6 position-relative">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control " id="name" name="Name" required placeholder="Enter name">

@@ -21,7 +21,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>About Us Item</summary>
 	[PublishedModel("aboutUsItem")]
-	public partial class AboutUsItem : PublishedContentModel, IMainImageControls
+	public partial class AboutUsItem : PublishedContentModel, IMainImageControls, IUserControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -71,5 +71,12 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
 		[ImplementPropertyType("tTitle")]
 		public virtual string TTitle => global::Umbraco.Web.PublishedModels.MainImageControls.GetTTitle(this);
+
+		///<summary>
+		/// User
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.14.0")]
+		[ImplementPropertyType("tUser")]
+		public virtual object TUser => global::Umbraco.Web.PublishedModels.UserControls.GetTUser(this);
 	}
 }
